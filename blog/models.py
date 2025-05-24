@@ -5,6 +5,28 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 
+from .enums import PostCategories
+
+
+class PostCategory(models.Model):
+    """A category assignable to multiple posts"""
+
+    name = models.CharField(
+        help_text="The category name",
+        db_comment="The category name",
+        max_length=20,
+        unique=True,
+        choices=PostCategories,  # type: ignore
+    )
+    created_at = models.DateTimeField(
+        help_text="The creation date of the category object",
+        db_comment="The creation date of the category object",
+        default=timezone.now,
+    )
+
+    def __str__(self) -> str:
+        return self.name
+
 
 class PostThumbnail(models.Model):
     """A thumbnail image of a blog post"""
@@ -33,6 +55,7 @@ class Post(models.Model):
         blank=True,
     )
     thumbnail = models.OneToOneField(PostThumbnail, on_delete=models.CASCADE)
+    categories = models.ManyToManyField(PostCategory)
     title = models.CharField(
         help_text="The post title, describing the global topic",
         db_comment="The post title, describing the global topic",
