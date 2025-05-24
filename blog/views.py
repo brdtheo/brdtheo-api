@@ -6,7 +6,7 @@ from .models import Post
 
 def index(request: HttpRequest) -> HttpResponse:
     try:
-        posts = Post.objects.all()  # TODO: implement proper pagination system
+        posts = Post.objects.all().order_by("-created_at")
     except Post.DoesNotExist:
         raise Http404
 
