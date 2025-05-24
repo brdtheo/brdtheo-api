@@ -3,6 +3,7 @@ from typing import Any, override
 import markdown
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 
 
 class PostThumbnail(models.Model):
@@ -25,11 +26,11 @@ class PostThumbnail(models.Model):
 class Post(models.Model):
     """A representation of a blog post"""
 
-    slug = models.CharField(
+    slug = models.SlugField(
         help_text="The URI encoded post title",
         db_comment="The URI encoded post title",
-        max_length=60,
         unique=True,
+        blank=True,
     )
     thumbnail = models.OneToOneField(PostThumbnail, on_delete=models.CASCADE)
     title = models.CharField(
@@ -64,7 +65,12 @@ class Post(models.Model):
 
     @override
     def save(self, *args: Any, **kwargs: Any) -> None:
-        """Use None for initial updated_at value"""
+        # Use None for initial updated_at value
         if self.pk:
             self.updated_at = timezone.now()
+
+        # Automatically set slug
+        if not self.slug:
+            self.slug = slugify(self.title)
+
         super().save(*args, **kwargs)
