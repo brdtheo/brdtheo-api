@@ -5,6 +5,23 @@ from django.db import models
 from django.utils import timezone
 
 
+class PostThumbnail(models.Model):
+    """A thumbnail image of a blog post"""
+
+    url = models.URLField(
+        help_text="The thumbnail media URL",
+        db_comment="The thumbnail media URL",
+    )
+    created_at = models.DateTimeField(
+        help_text="The creation date of the thumbnail object",
+        db_comment="The creation date of the thumbnail object",
+        default=timezone.now,
+    )
+
+    def __str__(self) -> str:
+        return self.url
+
+
 class Post(models.Model):
     """A representation of a blog post"""
 
@@ -14,6 +31,7 @@ class Post(models.Model):
         max_length=60,
         unique=True,
     )
+    thumbnail = models.OneToOneField(PostThumbnail, on_delete=models.CASCADE)
     title = models.CharField(
         help_text="The post title, describing the global topic",
         db_comment="The post title, describing the global topic",
