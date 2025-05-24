@@ -31,7 +31,20 @@
           content="{% block metadescription %}{% endblock metadescription %}">
   </head>
   <body>
-    {% include "brdtheo/header.html" %}
+    <header class="wrapper flex flex-col gap-2 py-8">
+      <h1 class="text-xl text-white">
+        {% block heading %}
+        {% endblock heading %}
+      </h1>
+      <nav class="text-white">
+        <ul class="text-sm flex gap-3">
+          <a class="underline" href="{% url 'home' %}">Home</a>
+          <a class="underline" href="{% url 'blog' %}">Blog</a>
+          <a class="underline">Gallery</a>
+          <a class="underline">Contact</a>
+        </ul>
+      </nav>
+    </header>
     <main class="wrapper flex flex-col gap-8">
       {% block main %}
       {% endblock main %}
