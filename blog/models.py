@@ -8,7 +8,6 @@ from django.utils import timezone
 class Post(models.Model):
     """A representation of a blog post"""
 
-    # Fields
     slug = models.CharField(
         help_text="The URI encoded post title",
         db_comment="The URI encoded post title",
@@ -36,7 +35,6 @@ class Post(models.Model):
         blank=True,
     )
 
-    # Methods
     def __str__(self) -> str:
         return self.title
 

@@ -1,3 +1,15 @@
 [tool.djlint]
 profile="django"
 ignore="H031"
+
+[tool.pyright]
+    typeCheckingMode = "strict" # "off", "basic", "standard", "strict"
+    reportUnknownArgumentType = false # silent for Django models
+    reportUnknownVariableType = false # silent for Django models
+    reportUnknownMemberType = false # silent for Django models
+    reportMissingTypeArgument = false # silent for Django admin
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "brdtheo.settings"
+python_files = ["tests.py"]
+addopts = "--reuse-db --create-db"
