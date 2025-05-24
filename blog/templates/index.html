@@ -5,15 +5,13 @@
 {% block metadescription %}
   lorem ipsum dolor sit amet
 {% endblock metadescription %}
+{% block heading %}
+  Blog
+{% endblock heading %}
 {% block main %}
-  <h1>posts</h1>
   <ul>
     {% for post in posts %}
-      <li>
-        <a href="{% url 'blog-post' post.slug %}">
-          <h2>{{ post.title }}</h2>
-        </a>
-      </li>
+      <li>{% include "post-card.html" with post=post %}</li>
     {% endfor %}
   </ul>
 {% endblock main %}
