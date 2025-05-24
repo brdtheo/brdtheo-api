@@ -21,7 +21,7 @@ from django.urls import URLPattern, URLResolver, include, path
 from brdtheo.views import index
 
 urlpatterns: list[URLResolver | URLPattern] = [
-    path("admin/", admin.site.urls),
+    path("manage/", admin.site.urls),
     path("", index, name="home"),
     path("blog/", include("blog.urls")),
 ]
