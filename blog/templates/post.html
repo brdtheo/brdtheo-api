@@ -1,11 +1,15 @@
 {% extends "brdtheo/base.html" %}
 {% block title %}
-  {{ title }}
+  {{ title }} - Théo Billardey
 {% endblock title %}
-{% block metadescription %}
-  lorem ipsum dolor sit amet
-{% endblock metadescription %}
+{% block heading %}
+  Blog
+{% endblock heading %}
+{% block header_image %}
+  <div class="w-14 h-14 rotate-y-180 bg-cover bg-center bg-[url('https://d3np79dr82q4gx.cloudfront.net/misc/peepo.gif')]">
+  </div>
+{% endblock header_image %}
 {% block main %}
-  <h1>{{ title }}</h1>
-  {{ content | safe }}
+  {% include "post-header.html" with thumbnail=thumbnail title=title categories=categories created_at=created_at %}
+  <article class="blog-post-content">{{ content | safe }}</article>
 {% endblock main %}
