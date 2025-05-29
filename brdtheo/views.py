@@ -22,7 +22,6 @@ def index(request: HttpRequest) -> HttpResponse:
     to_visit_country_list = [
         "thailand",
         "united_states",
-        "switzerland",
         "china",
         "italy",
         "poland",
