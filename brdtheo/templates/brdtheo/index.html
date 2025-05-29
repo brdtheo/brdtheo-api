@@ -2,9 +2,6 @@
 {% block title %}
   Théo Billardey
 {% endblock title %}
-{% block metadescription %}
-  lorem ipsum dolor sit amet
-{% endblock metadescription %}
 {% block heading %}
   Théo Billardey
 {% endblock heading %}
@@ -14,10 +11,10 @@
     {% if latest_post %}
       {% include "brdtheo/sections/latest-post.html" with title=latest_post.title %}
     {% endif %}
-    {% include "brdtheo/sections/fun-fact.html" %}
     {% include "brdtheo/sections/countrydex.html" with visited_country_list=visited_country_list to_visit_country_list=to_visit_country_list %}
     {% include "brdtheo/sections/hire-me.html" %}
-    {% include "brdtheo/sections/pinned-media.html" %}
     {% include "brdtheo/sections/zen.html" %}
+    {% include "brdtheo/sections/pinned-media.html" %}
+    {% include "brdtheo/sections/fun-fact.html" %}
   </div>
 {% endblock main %}
