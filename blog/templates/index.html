@@ -2,16 +2,13 @@
 {% block title %}
   Blog - Théo Billardey
 {% endblock title %}
-{% block metadescription %}
-  lorem ipsum dolor sit amet
-{% endblock metadescription %}
 {% block heading %}
   Blog
 {% endblock heading %}
 {% block main %}
   <ul>
     {% for post in posts %}
-      <li>{% include "post-card.html" with post=post %}</li>
+      <li class="not-last:border-b border-electric-green">{% include "post-card.html" with post=post %}</li>
     {% endfor %}
   </ul>
 {% endblock main %}
