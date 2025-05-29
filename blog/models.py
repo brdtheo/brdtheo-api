@@ -92,8 +92,8 @@ class Post(models.Model):
         if self.pk:
             self.updated_at = timezone.now()
 
-        # Automatically set slug
-        if not self.slug:
+        # Automatically set slug if not defined or title is updated
+        if not self.slug or (slugify(self.title) != self.slug):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
