@@ -32,24 +32,22 @@
   </head>
   <body>
     <header class="wrapper flex items-center justify-between">
-      <div class="flex flex-col gap-2 py-8">
-        <h1 class="text-xl text-white">
+      <div class="flex flex-col gap-2 py-8 w-full">
+        <h1 class="text-xl font-bold text-white">
           {% block heading %}
           {% endblock heading %}
         </h1>
         <nav class="text-white">
-          <ul class="text-sm flex gap-3">
-            <a class="underline" href="{% url 'home' %}">Home</a>
-            <a class="underline" href="{% url 'blog' %}">Blog</a>
-            <a class="underline">Gallery</a>
-            <a class="underline">Contact</a>
+          <ul class="font-medium text-sm flex">
+            <a class="underline pr-3" href="{% url 'home' %}">Home</a>
+            <a class="underline pr-3" href="{% url 'blog' %}">Blog</a>
           </ul>
         </nav>
       </div>
       {% block header_image %}
       {% endblock header_image %}
     </header>
-    <main class="wrapper flex flex-col gap-8">
+    <main class="wrapper flex flex-col">
       {% block main %}
       {% endblock main %}
     </main>
