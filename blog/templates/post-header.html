@@ -1,0 +1,18 @@
+<div class="flex w-full gap-4">
+  <img width="256"
+       height="256"
+       class="object-cover aspect-square w-64 h-64"
+       src="{{ thumbnail }}"
+       alt="{{ title }}" />
+  <div class="flex flex-1 flex-col justify-between gap-6">
+    <h1 class="text-electric-green font-bold text-4xl">{{ title }}</h1>
+    <div class="flex flex-col w-full">
+      <ul class="flex gap-2 flex-wrap pb-4">
+        {% for category in categories %}
+          <li>{% include "category.html" with name=category.name %}</li>
+        {% endfor %}
+      </ul>
+      <span class="text-sm text-white">{{ created_at|date:"F j, Y" }}</span>
+    </div>
+  </div>
+</div>
