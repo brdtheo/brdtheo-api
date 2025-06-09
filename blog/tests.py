@@ -38,6 +38,8 @@ class PostTest(TestCase):
         assert self.post.get_content_html() == "<p>lorem ipsum dolor sit amet</p>"
         assert type(self.post.thumbnail.url) is str
         assert self.post.thumbnail.url == self.thumbnail.url
+        assert type(self.post.is_published) is bool
+        assert self.post.is_published is False
 
     def test_update(self):
         """Correctly updates a post"""
