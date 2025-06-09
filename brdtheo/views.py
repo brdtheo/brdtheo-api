@@ -7,7 +7,7 @@ from blog.models import Post
 def index(request: HttpRequest) -> HttpResponse:
     # Retrieve the latest blog post. If none, hide the section
     try:
-        latest_post = Post.objects.latest("created_at")
+        latest_post = Post.objects.filter(is_published=True).latest("created_at")
     except Post.DoesNotExist:
         latest_post = None
 
