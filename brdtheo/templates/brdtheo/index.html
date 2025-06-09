@@ -9,7 +9,7 @@
   {% include "brdtheo/sections/summary.html" %}
   <div class="flex flex-col gap-4">
     {% if latest_post %}
-      {% include "brdtheo/sections/latest-post.html" with title=latest_post.title %}
+      {% include "brdtheo/sections/latest-post.html" %}
     {% endif %}
     {% include "brdtheo/sections/countrydex.html" with visited_country_list=visited_country_list to_visit_country_list=to_visit_country_list %}
     {% include "brdtheo/sections/hire-me.html" %}
