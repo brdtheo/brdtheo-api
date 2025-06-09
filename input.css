@@ -35,7 +35,6 @@ main {
 .blog-post-content {
   font-family: "Ubuntu", system-ui, sans-serif;
   color: #ffffff;
-  padding-top: 2rem;
 }
 
 .blog-post-content h1,
@@ -79,7 +78,7 @@ main {
 
 .blog-post-content p {
   margin-bottom: 1.6rem;
-  line-height: 1.6;
+  line-height: 2;
 }
 
 .blog-post-content ul {
