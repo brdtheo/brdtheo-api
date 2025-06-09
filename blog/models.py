@@ -65,6 +65,11 @@ class Post(models.Model):
         help_text="The post body/content, containing rich text for Markdown display",
         db_comment="The post body/content, containing rich text for Markdown display",
     )
+    is_published = models.BooleanField(
+        help_text="Defines if a post is published or hidden",
+        db_comment="Defines if a post is published or hidden",
+        default=False,
+    )
     created_at = models.DateTimeField(
         help_text="The creation date of the post",
         db_comment="The creation date of the post",

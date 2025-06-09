@@ -17,7 +17,8 @@ class PostThumbnailAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ("title", "slug", "thumbnail")
+    list_display = ("title", "slug", "thumbnail", "is_published")
+    list_editable = ("is_published",)
     list_per_page = 10
     list_filter = ("categories",)
     filter_horizontal = ("categories",)
