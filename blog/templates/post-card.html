@@ -17,7 +17,8 @@
             {% endfor %}
           </ul>
         {% endif %}
-        <div class="flex justify-between items-center pt-5">
+        <p class="blog-post-content my-4 line-clamp-3">{{ post.get_content_html|safe|striptags|truncatechars:200 }}</p>
+        <div class="flex justify-between items-center">
           <span class="text-sm text-white">{{ post.created_at|date:"F j, Y" }}</span>
           <span class="bg-rufous text-white px-px text-sm">Read &gt;</span>
         </div>
