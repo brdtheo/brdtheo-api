@@ -14,7 +14,7 @@
   min-width: 75px;
   min-height: 23px;
   padding: 0 12px;
-  font-family: "Pixelated MS Sans Serif";
+  font-family: "Arial";
 }
 .xp-button:not(:disabled).active,
 .xp-button:not(:disabled):active {
@@ -27,7 +27,7 @@
   outline-offset: -4px;
 }
 .xp-button {
-  font-family: "Pixelated MS Sans Serif";
+  font-family: 'Arial';
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   box-sizing: border-box;
