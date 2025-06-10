@@ -42,7 +42,7 @@
             src="https://analytics.brdtheo.com/js/script.js"></script>
   </head>
   <body>
-    <header class="wrapper flex items-center justify-between">
+    <header class="{% block header_css_class %}{% endblock header_css_class %} flex items-center justify-between">
       <div class="flex flex-col gap-2 py-8 w-full">
         <h1 class="text-xl font-bold text-white">
           {% block heading %}
@@ -58,7 +58,7 @@
       {% block header_image %}
       {% endblock header_image %}
     </header>
-    <main class="wrapper flex flex-col">
+    <main class="{% block main_css_class %}{% endblock main_css_class %} flex flex-col">
       {% block main %}
       {% endblock main %}
     </main>

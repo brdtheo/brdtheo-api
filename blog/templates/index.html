@@ -9,6 +9,12 @@
   <div class="w-14 h-14 rotate-y-180 bg-cover bg-center bg-[url('https://d3np79dr82q4gx.cloudfront.net/misc/peepo.gif')]">
   </div>
 {% endblock header_image %}
+{% block header_css_class %}
+  wrapper
+{% endblock header_css_class %}
+{% block main_css_class %}
+  wrapper
+{% endblock main_css_class %}
 {% block main %}
   {% if posts.count %}
     <ul>
