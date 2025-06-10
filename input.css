@@ -32,6 +32,11 @@ main {
 }
 
 /* Blog post content */
+.wrapper-post {
+  width: 768px;
+  margin: 0 auto;
+}
+
 .blog-post-content {
   font-family: "Ubuntu", system-ui, sans-serif;
   color: #ffffff;
