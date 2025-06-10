@@ -1,11 +1,11 @@
 <section>
-  <div class="border-8 border-dark-red bg-passport flex gap-6 p-4 h-42 rounded-md">
+  <div class="border-8 border-dark-red bg-passport flex gap-6 p-4 sm:h-42 rounded-md">
     <div class="w-16 h-16 bg-no-repeat bg-contain bg-center bg-[url('https://d3np79dr82q4gx.cloudfront.net/home/passport.webp')]">
     </div>
     <div class="flex flex-col gap-4 font-medium flex-1">
       <div class="flex flex-col gap-2">
         <h3 class="text-sm uppercase">my countrydex</h3>
-        <ul class="flex gap-2">
+        <ul class="flex flex-wrap sm:flex-nowrap gap-2">
           {% for country in visited_country_list %}
             <li class="w-8 border border-dark-red">
               <img class="drop-shadow-[2px_2px_0] drop-shadow-dark-red"
@@ -19,7 +19,7 @@
       </div>
       <div class="flex flex-col gap-2">
         <h3 class="text-sm uppercase">to visit</h3>
-        <ul class="flex gap-2">
+        <ul class="flex flex-wrap sm:flex-nowrap gap-2">
           {% for country in to_visit_country_list %}
             <li class="w-8 border border-dark-red">
               <img class="drop-shadow-[2px_2px_0] drop-shadow-dark-red"
@@ -32,7 +32,7 @@
         </ul>
       </div>
     </div>
-    <div class="flex-1 flex justify-center items-center">
+    <div class="hidden flex-1 sm:flex justify-center items-center">
       <img width="48"
            height="67"
            class="rotate-12 w-12 self-center"
