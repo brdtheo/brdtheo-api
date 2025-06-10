@@ -43,6 +43,13 @@ main {
   color: #ffffff;
 }
 
+.blog-post-content img {
+  max-width: 768px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--aspect-video);
+}
+
 .blog-post-content h1,
 .blog-post-content h2,
 .blog-post-content h3,
