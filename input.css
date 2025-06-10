@@ -2,6 +2,7 @@
 
 @theme {
   --color-background: #0f0f0f;
+  --color-background-lighter: #262626;
   --color-electric-green: #00ff1e;
   --color-rufous: #ad1700;
   --color-corsa: #d50707;
@@ -84,12 +85,49 @@ main {
 .blog-post-content p {
   margin-bottom: 1.6rem;
   line-height: 2;
+  font-size: 1.1rem;
 }
 
-.blog-post-content ul {
+.blog-post-content ul,
+.blog-post-content ol {
   margin-bottom: 1.6rem;
+  padding-left: 1rem;
 }
 
-.blog-post-content li {
+.blog-post-content ul li,
+.blog-post-content ol li {
+  font-size: 1.1rem;
+}
+
+.blog-post-content ul li {
   list-style-type: disc;
+}
+
+.blog-post-content ol li {
+  list-style-type: decimal;
+}
+
+.blog-post-content a {
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-electric-green);
+}
+
+.blog-post-content blockquote {
+  margin-left: 2rem;
+  padding: 0 1rem;
+  border-left: 2px solid var(--color-electric-green);
+  background: var(--color-background-lighter);
+}
+
+.blog-post-content blockquote p {
+  font-style: italic;
+}
+
+code {
+  font-family: "Fira Mono", system-ui, sans-serif;
+  background: var(--color-background-lighter);
+  padding: 2px 4px;
+  font-size: 1rem;
 }
