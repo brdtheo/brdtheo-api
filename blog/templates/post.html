@@ -15,6 +15,9 @@
 {% block main_css_class %}
   wrapper-post
 {% endblock main_css_class %}
+{% block footer_css_class %}
+  wrapper-post
+{% endblock footer_css_class %}
 {% block main %}
   {% include "post-header.html" with thumbnail=thumbnail title=title categories=categories created_at=created_at %}
   <article class="blog-post-content">{{ content | safe }}</article>
