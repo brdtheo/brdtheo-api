@@ -20,8 +20,11 @@ from django.urls import URLPattern, URLResolver, include, path
 
 from brdtheo.views import index
 
+from .feeds import RssPostFeeds
+
 urlpatterns: list[URLResolver | URLPattern] = [
     path("manage/", admin.site.urls),
     path("", index, name="home"),
     path("blog/", include("blog.urls")),
+    path("rss/", RssPostFeeds(), name="rss-feed"),
 ]
