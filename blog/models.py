@@ -53,6 +53,7 @@ class Post(models.Model):
         db_comment="The URI encoded post title",
         unique=True,
         blank=True,
+        max_length=100,
     )
     thumbnail = models.OneToOneField(PostThumbnail, on_delete=models.CASCADE)
     categories = models.ManyToManyField(PostCategory)
