@@ -14,7 +14,7 @@ class RssPostFeeds(Feed):
     description = "Latest blog posts from brdtheo.com."
 
     def items(self) -> QuerySet[Post, Post]:
-        return Post.objects.order_by("-created_at")[:100]
+        return Post.objects.filter(is_published=True).order_by("-created_at")[:10]
 
     def item_title(self, item: Post) -> str:
         return item.title
