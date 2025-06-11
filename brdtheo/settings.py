@@ -34,9 +34,12 @@ DEBUG = bool(os.getenv("DEBUG", default=0))
 
 ALLOWED_HOSTS: list[str] = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
 CRSF_TRUSTED_ORIGINS: list[str] = os.getenv(
-    "DJANGO_CRSF_TRUSTED_ORIGINS", "https://127.0.0.1"
+    "DJANGO_CSRF_TRUSTED_ORIGINS", "https://127.0.0.1"
 ).split(",")
 CSRF_COOKIE_DOMAIN: str = os.getenv("DJANGO_CSRF_COOKIE_DOMAIN", "127.0.0.1")
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 
 # Application definition
 INSTALLED_APPS = [
