@@ -62,5 +62,15 @@
       {% block main %}
       {% endblock main %}
     </main>
+    <footer class="{% block footer_css_class %}{% endblock footer_css_class %} px-4 sm:px-0 pb-12">
+      <div class="flex justify-between text-white/70 text-xs">
+        <a class="flex items-center underline gap-1"
+           title="RSS feed"
+           href="{% url "rss-feed" %}">
+          <span>RSS feed</span>
+        </a>
+        <span>❤️ Django</span>
+      </div>
+    </footer>
   </body>
 </html>
