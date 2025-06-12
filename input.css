@@ -48,6 +48,7 @@ main {
   width: 100%;
   height: auto;
   aspect-ratio: var(--aspect-video);
+  margin-bottom: 1rem;
 }
 
 .blog-post-content h1,
