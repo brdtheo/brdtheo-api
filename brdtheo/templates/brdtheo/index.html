@@ -14,12 +14,13 @@
 {% block main %}
   {% include "brdtheo/sections/summary.html" %}
   <div class="flex flex-col gap-4">
+    {% include "brdtheo/sections/favourite-stack.html" %}
+    {% include "brdtheo/sections/hire-me.html" %}
     {% if latest_post %}
       {% include "brdtheo/sections/latest-post.html" %}
     {% endif %}
-    {% include "brdtheo/sections/countrydex.html" with visited_country_list=visited_country_list to_visit_country_list=to_visit_country_list %}
-    {% include "brdtheo/sections/hire-me.html" %}
     {% include "brdtheo/sections/zen.html" %}
+    {% include "brdtheo/sections/countrydex.html" with visited_country_list=visited_country_list to_visit_country_list=to_visit_country_list %}
     {% include "brdtheo/sections/pinned-media.html" %}
     {% include "brdtheo/sections/fun-fact.html" %}
   </div>
