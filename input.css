@@ -12,7 +12,20 @@
   --color-frog: #0e2800;
   --color-cream: #fff7db;
   --color-onyx: #383838;
+  --font-ubuntu: "Ubuntu", system-ui, "sans-serif";
   --font-pixelify: "Pixelify Sans", system-ui, "sans-serif";
+  --font-volter: "Volter", system-ui, "sans-serif";
+}
+
+@font-face {
+  font-family: "Volter";
+  src: url("../fonts/volter.otf");
+}
+
+@font-face {
+  font-family: "Volter";
+  src: url("../fonts/volter_bold.otf");
+  font-weight: bold;
 }
 
 html {
