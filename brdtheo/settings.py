@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     "meta",
     "blog",
 ]
@@ -85,6 +87,8 @@ TEMPLATES: list[dict[str, str | list[str] | bool | dict[str, list[str]]]] = [
 ]
 
 WSGI_APPLICATION = "brdtheo.wsgi.application"
+
+SITE_ID = 1
 
 
 # Database

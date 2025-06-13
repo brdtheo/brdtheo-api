@@ -2,6 +2,7 @@ from typing import Any, override
 
 import markdown
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
@@ -91,6 +92,9 @@ class Post(models.Model):
         return markdown.markdown(
             self.content, extensions=["markdown.extensions.fenced_code"]
         )
+
+    def get_absolute_url(self) -> str:
+        return reverse("blog-post", args=[str(self.slug)])
 
     @override
     def save(self, *args: Any, **kwargs: Any) -> None:
