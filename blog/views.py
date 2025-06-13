@@ -1,5 +1,8 @@
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
+from meta.views import Meta  # type: ignore
+
+from brdtheo.utils import strip_tags
 
 from .models import Post
 
@@ -10,7 +13,19 @@ def index(request: HttpRequest) -> HttpResponse:
     except Post.DoesNotExist:
         raise Http404
 
-    return render(request, "index.html", context={"posts": posts})
+    meta = Meta(
+        title="Théo Billardey - Blog",
+        description="Browse latest Théo Billardey's blog posts",
+        url="/blog/",
+        image="https://d3np79dr82q4gx.cloudfront.net/home/avatar.webp",
+        use_title_tag=True,
+        use_og=True,
+        extra_custom_props=[
+            ("http-equiv", "Content-Type", "text/html; charset=UTF-8"),
+        ],
+    )
+
+    return render(request, "index.html", context={"meta": meta, "posts": posts})
 
 
 def post(request: HttpRequest, slug: str) -> HttpResponse:
@@ -19,10 +34,23 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
     except Post.DoesNotExist:
         raise Http404
 
+    meta = Meta(
+        title=f"{post.title} - Théo Billardey",
+        description=f"{strip_tags(post.get_content_html())[:150]}...",
+        url=f"/blog/{post.slug}",
+        image=post.thumbnail.url,
+        use_title_tag=True,
+        use_og=True,
+        extra_custom_props=[
+            ("http-equiv", "Content-Type", "text/html; charset=UTF-8"),
+        ],
+    )
+
     return render(
         request,
         "post.html",
         context={
+            "meta": meta,
             "thumbnail": post.thumbnail.url,
             "title": post.title,
             "content": post.get_content_html(),

@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% include "meta/meta.html" %}
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,10 +32,6 @@
           href="{% static 'apple-touch-icon.png' %}" />
     <meta name="apple-mobile-web-app-title" content="brdtheo" />
     <link rel="manifest" href="{% static 'site.webmanifest' %}" />
-    <title>
-      {% block title %}
-      {% endblock title %}
-    </title>
     <meta name="description"
           content="{% block metadescription %}{% endblock metadescription %}">
     <script defer
