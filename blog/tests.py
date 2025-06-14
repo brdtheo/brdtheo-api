@@ -6,6 +6,8 @@ from django.test import TestCase
 from .enums import PostCategories
 from .models import Post, PostCategory, PostThumbnail
 
+test_post_content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at ex sapien. Sed in tellus non dolor dapibus tincidunt in eget nisl. Aenean eget nunc pulvinar, accumsan quam non, aliquam mauris augue."
+
 
 class PostTest(TestCase):
     def setUp(self):
@@ -17,7 +19,7 @@ class PostTest(TestCase):
         )
         post = Post.objects.create(
             title="Test Post",
-            content="lorem ipsum dolor sit amet",
+            content=test_post_content,
             thumbnail=thumbnail,
         )
         post.categories.set(category_list)
@@ -31,11 +33,14 @@ class PostTest(TestCase):
         assert type(self.post.title) is str
         assert self.post.title == "Test Post"
         assert type(self.post.content) is str
-        assert self.post.content == "lorem ipsum dolor sit amet"
+        assert self.post.content == test_post_content
         assert isinstance(self.post.created_at, datetime.date)
         assert self.post.updated_at is None
         assert type(self.post.get_content_html()) is str
-        assert self.post.get_content_html() == "<p>lorem ipsum dolor sit amet</p>"
+        assert self.post.get_content_html() == f"<p>{test_post_content}</p>"
+        assert type(self.post.get_content_preview()) is str
+        assert len(self.post.get_content_preview()) == 150
+        assert len(self.post.get_content_preview(180)) == 180
         assert type(self.post.thumbnail.url) is str
         assert self.post.thumbnail.url == self.thumbnail.url
         assert type(self.post.is_published) is bool
