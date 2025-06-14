@@ -21,7 +21,7 @@ from django.urls import URLPattern, URLResolver, include, path
 
 from .feeds import RssPostFeeds
 from .sitemaps import sitemaps
-from .views import index
+from .views import RobotsTxtView, index
 
 urlpatterns: list[URLResolver | URLPattern] = [
     path("manage/", admin.site.urls),
@@ -34,4 +34,5 @@ urlpatterns: list[URLResolver | URLPattern] = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    path("robots.txt", RobotsTxtView.as_view(content_type="text/plain")),
 ]
