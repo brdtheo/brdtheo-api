@@ -1,8 +1,15 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.views.generic import TemplateView
 from meta.views import Meta  # type: ignore
 
 from blog.models import Post
+from brdtheo.settings import ALLOWED_HOSTS
+
+
+class RobotsTxtView(TemplateView):
+    is_dev_environment = "dev.brdtheo.com" in ALLOWED_HOSTS
+    template_name = "dev.robots.txt" if is_dev_environment else "robots.txt"
 
 
 def index(request: HttpRequest) -> HttpResponse:
