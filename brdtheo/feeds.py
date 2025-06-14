@@ -2,7 +2,6 @@ from datetime import datetime
 
 from django.contrib.syndication.views import Feed
 from django.db.models import QuerySet
-from django.template.defaultfilters import truncatewords
 from django.urls import reverse
 
 from blog.models import Post
@@ -20,7 +19,7 @@ class RssPostFeeds(Feed):
         return item.title
 
     def item_description(self, item: Post) -> str:
-        return truncatewords(item.content, 100)
+        return item.get_content_preview(500)
 
     def item_lastupdated(self, item: Post) -> datetime | None:
         return item.updated_at

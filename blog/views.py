@@ -2,8 +2,6 @@ from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
 from meta.views import Meta  # type: ignore
 
-from brdtheo.utils import strip_tags
-
 from .models import Post
 
 
@@ -36,7 +34,7 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
 
     meta = Meta(
         title=f"{post.title} - Théo Billardey",
-        description=f"{strip_tags(post.get_content_html())[:150]}...",
+        description=post.get_content_preview(),
         url=f"/blog/{post.slug}",
         image=post.thumbnail.url,
         use_title_tag=True,

@@ -6,6 +6,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
+from brdtheo.utils import strip_tags
+
 from .enums import PostCategories
 
 
@@ -92,6 +94,11 @@ class Post(models.Model):
         return markdown.markdown(
             self.content, extensions=["markdown.extensions.fenced_code"]
         )
+
+    def get_content_preview(self, max_length: int = 150) -> str:
+        """Returns a portion of the post in text only"""
+        stripped_content = strip_tags(self.get_content_html())
+        return f"{stripped_content[: max_length - 3]}..."
 
     def get_absolute_url(self) -> str:
         return reverse("blog-post", args=[str(self.slug)])
