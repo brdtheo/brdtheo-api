@@ -2,6 +2,8 @@ from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import render
 from meta.views import Meta  # type: ignore
 
+from brdtheo.settings import IS_DEV_ENVIRONMENT
+
 from .models import Post
 
 
@@ -20,6 +22,7 @@ def index(request: HttpRequest) -> HttpResponse:
         use_og=True,
         extra_custom_props=[
             ("http-equiv", "Content-Type", "text/html; charset=UTF-8"),
+            ("name", "robots", "noindex") if IS_DEV_ENVIRONMENT else ("", "", ""),
         ],
     )
 
@@ -41,6 +44,7 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
         use_og=True,
         extra_custom_props=[
             ("http-equiv", "Content-Type", "text/html; charset=UTF-8"),
+            ("name", "robots", "noindex") if IS_DEV_ENVIRONMENT else ("", "", ""),
         ],
     )
 
