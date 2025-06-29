@@ -37,6 +37,8 @@
     <script defer
             data-domain="brdtheo.com"
             src="https://analytics.brdtheo.com/js/script.js"></script>
+    <link rel="canonical"
+          href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
   </head>
   <body>
     <header class="{% block header_css_class %}{% endblock header_css_class %} px-4 sm:px-0 flex items-center justify-between">
