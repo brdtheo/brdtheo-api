@@ -4,12 +4,11 @@ from django.views.generic import TemplateView
 from meta.views import Meta  # type: ignore
 
 from blog.models import Post
-from brdtheo.settings import ALLOWED_HOSTS
+from brdtheo.settings import IS_DEV_ENVIRONMENT
 
 
 class RobotsTxtView(TemplateView):
-    is_dev_environment = "dev.brdtheo.com" in ALLOWED_HOSTS
-    template_name = "dev.robots.txt" if is_dev_environment else "robots.txt"
+    template_name = "dev.robots.txt" if IS_DEV_ENVIRONMENT else "robots.txt"
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -44,6 +43,7 @@ def index(request: HttpRequest) -> HttpResponse:
         use_og=True,
         extra_custom_props=[
             ("http-equiv", "Content-Type", "text/html; charset=UTF-8"),
+            ("name", "robots", "noindex") if IS_DEV_ENVIRONMENT else ("", "", ""),
         ],
     )
 

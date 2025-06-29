@@ -40,6 +40,9 @@ CSRF_COOKIE_DOMAIN: str = os.getenv("DJANGO_CSRF_COOKIE_DOMAIN", "127.0.0.1")
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
+# Environment specific variables
+IS_DEV_ENVIRONMENT = "dev.brdtheo.com" in ALLOWED_HOSTS
+
 
 # Application definition
 INSTALLED_APPS = [
