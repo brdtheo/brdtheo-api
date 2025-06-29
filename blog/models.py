@@ -1,4 +1,4 @@
-from typing import Any, override
+from typing import Any
 
 import markdown
 from django.db import models
@@ -103,7 +103,6 @@ class Post(models.Model):
     def get_absolute_url(self) -> str:
         return reverse("blog-post", args=[str(self.slug)])
 
-    @override
     def save(self, *args: Any, **kwargs: Any) -> None:
         # Use None for initial updated_at value
         if self.pk:
