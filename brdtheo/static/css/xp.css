@@ -1,10 +1,4 @@
 /*! XP.css v0.2.6 - https://botoxparty.github.io/XP.css/ */
-@font-face {
-  font-family: "Pixelated MS Sans Serif";
-  src: url("../fonts/ms_sans_serif.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
 .xp-button {
   border: none;
   background: #ece9d8;
