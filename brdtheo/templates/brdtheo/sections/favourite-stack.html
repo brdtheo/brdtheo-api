@@ -1,15 +1,14 @@
-<div class="w-full flex-col items-center @sm:flex-row @sm:items-start self-center bg-background-lighter border-amber-500 border-2 flex flex-1 gap-3 pl-4 pr-8 py-5 rounded">
+<div class="w-full flex-col items-center @sm:flex-row @sm:items-start self-center bg-background-lighter border-amber-500 border-2 flex flex-1 gap-3 pl-4 pr-8 py-5">
   <div class="w-18 h-24 bg-no-repeat bg-contain bg-top bg-[url('https://d3np79dr82q4gx.cloudfront.net/home/trophy.webp')]">
   </div>
-  <div class="w-full sm:w-auto flex-colsm:items-start sm:justify-center text-yellow-400">
-    <h2 class="text-base font-ubuntu font-medium pb-3 tracking-wide">My favourite stack</h2>
-    <ul class="font-volter text-sm list-disc pl-4">
-      <li>React</li>
-      <li>TypeScript</li>
-      <li>Tailwind CSS</li>
-      <li>Storybook</li>
-      <li>Vitest/Playwright</li>
-      <li>Django REST Framework</li>
+  <div class="w-full flex-col text-yellow-400">
+    <h2 class="text-base font-inter font-semibold pb-3">My favourite stack</h2>
+    <ul class="text-sm list-disc pl-4">
+      {% for tool in stack_tools %}
+        <li class="font-medium not-last:mb-1">
+          <a href="{{ tool.url }}">{{ tool.name }}</a>
+        </li>
+      {% endfor %}
     </ul>
   </div>
 </div>
