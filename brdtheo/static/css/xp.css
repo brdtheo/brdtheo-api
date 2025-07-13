@@ -21,7 +21,7 @@
   outline-offset: -4px;
 }
 .xp-button {
-  font-family: 'Arial';
+  font-family: var(--font-vietnam);
   -webkit-font-smoothing: antialiased;
   font-size: 11px;
   box-sizing: border-box;
@@ -85,7 +85,7 @@
   align-items: center;
 }
 .title-bar-text {
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 0;
   margin-right: 24px;
