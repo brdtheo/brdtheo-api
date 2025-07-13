@@ -37,27 +37,27 @@
           href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
   </head>
   <body>
-    <header class="{% block header_css_class %}{% endblock header_css_class %} px-4 sm:px-0 flex items-center justify-between">
-      <div class="flex flex-col gap-2 py-8 w-full">
+    <header class="wrapper py-12 px-4 md:px-0 flex items-center justify-between">
+      <div class="flex flex-col gap-2 flex-1 h-16">
         <h1 class="text-xl font-bold text-white">
           {% block heading %}
           {% endblock heading %}
         </h1>
         <nav class="text-white">
           <ul class="font-medium text-sm flex">
-            <a class="underline pr-3" href="{% url 'home' %}">Home</a>
-            <a class="underline pr-3" href="{% url 'blog' %}">Blog</a>
+            <a class="underline pr-3 h-6 flex items-center" href="{% url 'home' %}">Home</a>
+            <a class="underline pr-3 h-6 flex items-center" href="{% url 'blog' %}">Blog</a>
           </ul>
         </nav>
       </div>
       {% block header_image %}
       {% endblock header_image %}
     </header>
-    <main class="@container {% block main_css_class %}{% endblock main_css_class %} px-4 sm:px-0 flex flex-col">
+    <main class="@container wrapper px-4 md:px-0 flex flex-col">
       {% block main %}
       {% endblock main %}
     </main>
-    <footer class="{% block footer_css_class %}{% endblock footer_css_class %} px-4 sm:px-0 pb-14">
+    <footer class="wrapper px-4 md:px-0 pb-14">
       <div class="flex justify-between text-white/70 text-xs">
         <a class="flex items-center underline gap-1"
            title="RSS feed"
