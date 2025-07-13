@@ -34,6 +34,16 @@ def index(request: HttpRequest) -> HttpResponse:
         "poland",
     ]
 
+    stack_tools = [
+        {"name": "React", "url": "https://react.dev/"},
+        {"name": "TypeScript", "url": "https://www.typescriptlang.org/"},
+        {"name": "Tailwind CSS", "url": "https://tailwindcss.com/"},
+        {"name": "Storybook", "url": "https://storybook.js.org/"},
+        {"name": "Vitest", "url": "https://vitest.dev/"},
+        {"name": "Playwright", "url": "https://playwright.dev/"},
+        {"name": "Django REST Framework", "url": "https://www.django-rest-framework.org/"},
+    ]
+
     meta = Meta(
         title="Théo Billardey",
         description="Welcome to my website. I am a Front-End engineer that loves traveling and car culture. Feel free to check out my work on GitHub or browse my blog posts.",
@@ -55,5 +65,6 @@ def index(request: HttpRequest) -> HttpResponse:
             "latest_post": latest_post,
             "visited_country_list": visited_country_list,
             "to_visit_country_list": to_visit_country_list,
+            "stack_tools": stack_tools,
         },
     )
