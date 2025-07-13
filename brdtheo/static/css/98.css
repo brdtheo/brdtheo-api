@@ -1,7 +1,7 @@
 /*! 98.css v0.2.6 - https://botoxparty.github.io/XP.css/ */
 .button-98 {
-  font-family: 'Arial';
-  font-size: 11px;
+  font-family: var(--font-vietnam);
+  font-size: 12px;
   box-sizing: border-box;
   border: none;
   background: silver;
@@ -11,6 +11,7 @@
   min-width: 75px;
   min-height: 23px;
   padding: 0 12px;
+  text-transform: uppercase;
 }
 .button-98:not(:disabled).active,
 .button-98:not(:disabled):active {
