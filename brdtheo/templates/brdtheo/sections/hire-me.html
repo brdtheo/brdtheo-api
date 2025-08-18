@@ -1,3 +1,4 @@
+{% load static %}
 <section>
   <div class="window w-full">
     <div class="title-bar">
@@ -21,6 +22,8 @@
            class="xp-button flex justify-center items-center cursor-pointer select-none">GitHub</a>
         <a href="https://www.linkedin.com/in/theo-billardey/"
            class="xp-button flex justify-center items-center cursor-pointer select-none">LinkedIn</a>
+        <a download href="{% static "resume.pdf" %}"
+           class="xp-button flex justify-center items-center cursor-pointer select-none">Resume</a>
       </div>
     </div>
   </div>
