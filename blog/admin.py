@@ -1,17 +1,11 @@
 from django.contrib import admin
 
-from .models import Post, PostCategory, PostThumbnail
+from .models import Post, PostCategory
 
 
 @admin.register(PostCategory)
 class PostCategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "created_at")
-    list_per_page = 10
-
-
-@admin.register(PostThumbnail)
-class PostThumbnailAdmin(admin.ModelAdmin):
-    list_display = ("url", "created_at")
     list_per_page = 10
 
 
