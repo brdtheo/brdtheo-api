@@ -56,7 +56,7 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
             "thumbnail": post.thumbnail.url,
             "title": post.title,
             "content": post.get_content_html(),
-            "categories": post.categories.all(),
+            "categories": post.categories.all().order_by("name"),
             "created_at": post.created_at,
         },
     )

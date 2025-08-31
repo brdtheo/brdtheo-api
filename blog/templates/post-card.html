@@ -12,7 +12,7 @@
       <div class="flex flex-col">
         {% if post.categories %}
           <ul class="flex gap-2 flex-wrap">
-            {% for category in post.categories.all %}
+            {% for category in post.categories.all|dictsort:"name" %}
               <li>{% include "category.html" with name=category.name %}</li>
             {% endfor %}
           </ul>
