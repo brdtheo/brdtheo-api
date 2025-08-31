@@ -9,6 +9,7 @@ from django.utils.text import slugify
 from brdtheo.utils import strip_tags
 
 from .enums import PostCategories
+from .markdown_extensions import ImageSizesExtension
 
 
 class PostCategory(models.Model):
@@ -76,9 +77,14 @@ class Post(models.Model):
         return self.title
 
     def get_content_html(self) -> str:
-        """Returns HTML code from rich text"""
+        """Returns HTML code from markdown"""
         return markdown.markdown(
-            self.content, extensions=["markdown.extensions.fenced_code"]
+            self.content,
+            extensions=[
+                "markdown.extensions.fenced_code",
+                "markdown.extensions.extra",
+                ImageSizesExtension(),
+            ],
         )
 
     def get_content_preview(self, max_length: int = 150) -> str:
