@@ -200,6 +200,27 @@ a:focus-visible {
   font-size: 1rem;
 }
 
+.blog-post-content .footnote hr {
+  margin-bottom: 1rem;
+}
+
+.blog-post-content .footnote p,
+.blog-post-content .footnote li::marker {
+  font-size: 0.9rem;
+}
+
+.blog-post-content .footnote a {
+  font-size: 0.8rem;
+}
+
+.blog-post-content .footnote ol {
+  margin-bottom: 0;
+}
+
+.blog-post-content .footnote ol li p {
+  margin-bottom: 0;
+}
+
 code {
   font-family: "Fira Mono", system-ui, sans-serif;
   background: var(--color-background-lighter);
