@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.test import TestCase
 
 from .enums import PostCategories
-from .models import Post, PostCategory, PostThumbnail
+from .models import Post, PostCategory
 
 test_post_content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at ex sapien. Sed in tellus non dolor dapibus tincidunt in eget nisl. Aenean eget nunc pulvinar, accumsan quam non, aliquam mauris augue."
 
@@ -14,17 +14,13 @@ class PostTest(TestCase):
         for category in PostCategories:
             PostCategory.objects.create(name=category)
         category_list = PostCategory.objects.all()
-        thumbnail = PostThumbnail.objects.create(
-            url="https://picsum.photos/seed/cv8JaiP/500/500"
-        )
         post = Post.objects.create(
             title="Test Post",
             content=test_post_content,
-            thumbnail=thumbnail,
+            thumbnail="https://picsum.photos/seed/cv8JaiP/500/500",
         )
         post.categories.set(category_list)
         self.post = post
-        self.thumbnail = thumbnail
 
     def test_create(self):
         """Correctly creates a post"""
@@ -41,8 +37,7 @@ class PostTest(TestCase):
         assert type(self.post.get_content_preview()) is str
         assert len(self.post.get_content_preview()) == 150
         assert len(self.post.get_content_preview(180)) == 180
-        assert type(self.post.thumbnail.url) is str
-        assert self.post.thumbnail.url == self.thumbnail.url
+        assert type(self.post.thumbnail) is str
         assert type(self.post.is_published) is bool
         assert self.post.is_published is False
 
@@ -57,12 +52,6 @@ class PostTest(TestCase):
     def test_delete(self):
         """Correctly deletes a post"""
         self.post.delete()
-        assert Post.objects.count() == 0
-
-    def test_delete_cascade(self):
-        """Correctly deletes the related post if a thumbnail is deleted"""
-        self.thumbnail.delete()
-        assert PostThumbnail.objects.count() == 0
         assert Post.objects.count() == 0
 
     def test_fail_create_no_thumbnail(self):

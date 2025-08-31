@@ -39,7 +39,7 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
         title=f"{post.title} - Théo Billardey",
         description=post.get_content_preview(),
         url=f"/blog/{post.slug}",
-        image=post.thumbnail.url,
+        image=post.thumbnail,
         use_title_tag=True,
         use_og=True,
         extra_custom_props=[
@@ -53,7 +53,7 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
         "post.html",
         context={
             "meta": meta,
-            "thumbnail": post.thumbnail.url,
+            "thumbnail": post.thumbnail,
             "title": post.title,
             "content": post.get_content_html(),
             "categories": post.categories.all().order_by("name"),
