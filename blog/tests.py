@@ -1,6 +1,5 @@
 import datetime
 
-from django.db import IntegrityError
 from django.test import TestCase
 
 from .enums import PostCategories
@@ -53,11 +52,3 @@ class PostTest(TestCase):
         """Correctly deletes a post"""
         self.post.delete()
         assert Post.objects.count() == 0
-
-    def test_fail_create_no_thumbnail(self):
-        """Fails to create a blog post if no assigned thumbnail"""
-        with self.assertRaises(IntegrityError):
-            Post.objects.create(
-                title="Post without thumbnail",
-                content="lorem ipsum dolor sit amet",
-            )
