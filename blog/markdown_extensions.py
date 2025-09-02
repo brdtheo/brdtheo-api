@@ -10,6 +10,8 @@ class ImageSizesProcessor(Treeprocessor):
         for image in root.iter("img"):
             if "sizes" not in image.attrib:
                 image.set("sizes", "(max-width: 768px) 100vw")
+            if "loading" not in image.attrib:
+                image.set("loading", "lazy")
         return root
 
 
