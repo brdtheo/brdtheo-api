@@ -5,19 +5,22 @@ on: [push]
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint code & templates
+    name: Lint code
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.22"
+
       - name: Set up Python 3.13
         uses: actions/setup-python@v5
         with:
           python-version: 3.13
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: uv sync --locked
 
       - name: Run Ruff
-        run: ruff check --output-format=github brdtheo/ blog/
-
-      - name: Run djLint
-        run: djlint brdtheo/templates blog/templates
+        run: uv run ruff check --output-format=github brdtheo/ blog/
