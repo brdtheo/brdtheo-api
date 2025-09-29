@@ -52,8 +52,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.sites",
-    "django.contrib.sitemaps",
     "meta",
     "blog",
 ]
@@ -77,7 +75,7 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 TEMPLATES: list[dict[str, str | list[str] | bool | dict[str, list[str]]]] = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(SETTINGS_PATH, "brdtheo/templates")],
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -90,8 +88,6 @@ TEMPLATES: list[dict[str, str | list[str] | bool | dict[str, list[str]]]] = [
 ]
 
 WSGI_APPLICATION = "brdtheo.wsgi.application"
-
-SITE_ID = 1
 
 
 # Database
