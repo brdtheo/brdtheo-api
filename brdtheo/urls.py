@@ -15,24 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.contrib.sitemaps.views import sitemap
-from django.urls import URLPattern, URLResolver, include, path
+from django.urls import include, path
+from rest_framework import routers
 
-from .feeds import RssPostFeeds
-from .sitemaps import sitemaps
-from .views import RobotsTxtView, index
+from blog.views import PostCategoryViewSet, PostViewSet
 
-urlpatterns: list[URLResolver | URLPattern] = [
-    path("manage/", admin.site.urls),
-    path("", index, name="home"),
-    path("blog/", include("blog.urls")),
-    path("rss/", RssPostFeeds(), name="rss-feed"),
-    path(
-        "sitemap.xml",
-        sitemap,
-        {"sitemaps": sitemaps},
-        name="django.contrib.sitemaps.views.sitemap",
-    ),
-    path("robots.txt", RobotsTxtView.as_view(content_type="text/plain")),
+router = routers.DefaultRouter()
+router.register(r"post", PostViewSet)
+router.register(r"categories", PostCategoryViewSet)
+
+urlpatterns = [
+    path("", include(router.urls)),
 ]
