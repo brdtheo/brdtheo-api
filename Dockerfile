@@ -32,18 +32,6 @@ RUN sh /uv-installer.sh && rm /uv-installer.sh
 # Ensure the installed binary is on the `PATH`
 ENV PATH="/root/.local/bin/:$PATH"
 
-# Install Node.js using NVM
-SHELL ["/bin/bash", "--login", "-c"]
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-RUN nvm install --lts
-RUN nvm use --lts
-
-# Install pnpm
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
-
 # Copy uv lock file first to leverage Docker cache
 COPY uv.lock .
 COPY pyproject.toml .
@@ -53,12 +41,6 @@ RUN uv sync --locked
 
 # Copy the Django project to container
 COPY . .
-
-# Install Node.js dependencies
-RUN pnpm install
-
-# Compile CSS
-RUN pnpm tailwind:build
 
 # Expose the Django port
 EXPOSE 8004
