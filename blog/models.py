@@ -2,7 +2,6 @@ from typing import Any
 
 import markdown
 from django.db import models
-from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
@@ -91,9 +90,6 @@ class Post(models.Model):
         """Returns a portion of the post in text only"""
         stripped_content = strip_tags(self.get_content_html())
         return f"{stripped_content[: max_length - 3]}..."
-
-    def get_absolute_url(self) -> str:
-        return reverse("blog-post", args=[str(self.slug)])
 
     def save(self, *args: Any, **kwargs: Any) -> None:
         # Use None for initial updated_at value
