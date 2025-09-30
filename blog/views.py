@@ -14,11 +14,12 @@ class PostCategoryViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class PostViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Post.objects.filter(is_published=True)
+    queryset = Post.objects.filter(is_published=True).order_by("-created_at")
     serializer_class = PostSerializer
+    lookup_field = "slug"
 
     @action(detail=False, methods=["get"])
     def latest(self, request: HttpRequest) -> HttpResponse:
         latest_post = Post.objects.last()
-        serializer = PostSerializer(latest_post)
+        serializer = PostSerializer(latest_post, context={"request": request})
         return Response(serializer.data, status=HTTP_200_OK)
