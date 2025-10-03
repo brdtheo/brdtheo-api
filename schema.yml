@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /categories/:
+    get:
+      operationId: categories_list
+      tags:
+      - categories
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostCategory'
+          description: ''
+  /categories/{id}/:
+    get:
+      operationId: categories_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this post category.
+        required: true
+      tags:
+      - categories
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostCategory'
+          description: ''
+  /posts/:
+    get:
+      operationId: posts_list
+      tags:
+      - posts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+          description: ''
+  /posts/{slug}/:
+    get:
+      operationId: posts_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: The URI encoded post title
+        required: true
+      tags:
+      - posts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+          description: ''
+  /posts/latest/:
+    get:
+      operationId: posts_latest_retrieve
+      tags:
+      - posts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+          description: ''
+components:
+  schemas:
+    NameEnum:
+      enum:
+      - JAPAN
+      - FRANCE
+      - AUTOMOTIVE
+      type: string
+      description: |-
+        * `JAPAN` - Japan
+        * `FRANCE` - France
+        * `AUTOMOTIVE` - Automotive
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        preview:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        slug:
+          type: string
+          description: The URI encoded post title
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        thumbnail:
+          type: string
+          format: uri
+          description: The post thumbnail media URL
+          maxLength: 200
+        title:
+          type: string
+          description: The post title, describing the global topic
+          maxLength: 60
+        content:
+          type: string
+          description: The post body/content, containing rich text for Markdown display
+        is_published:
+          type: boolean
+          description: Defines if a post is published or hidden
+        created_at:
+          type: string
+          format: date-time
+          description: The creation date of the post
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: The most recent update date of the post
+        categories:
+          type: array
+          items:
+            type: integer
+      required:
+      - categories
+      - content
+      - id
+      - preview
+      - thumbnail
+      - title
+      - url
+    PostCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/NameEnum'
+          description: |-
+            The category name
+
+            * `JAPAN` - Japan
+            * `FRANCE` - France
+            * `AUTOMOTIVE` - Automotive
+        created_at:
+          type: string
+          format: date-time
+          description: The creation date of the category object
+      required:
+      - id
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
