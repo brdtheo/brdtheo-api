@@ -17,6 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import URLPattern, URLResolver, include, path
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+)
 from rest_framework import routers
 
 from blog.views import PostCategoryViewSet, PostViewSet
@@ -26,6 +30,12 @@ router.register(r"posts", PostViewSet)
 router.register(r"categories", PostCategoryViewSet)
 
 urlpatterns: list[URLResolver | URLPattern] = [
+    path("schema", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "swagger",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
     path("manage", admin.site.urls),
     path("", include(router.urls)),
 ]
