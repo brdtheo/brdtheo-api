@@ -1,3 +1,1 @@
-# brdtheo's api
-
 [![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?logo=swagger&logoColor=white)](https://api.brdtheo.com/swagger)
